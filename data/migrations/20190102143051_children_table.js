@@ -17,8 +17,9 @@ exports.up = function(knex, Promise) {
         tbl
             .string('parent_name')
             .unsigned()
-            .references('name')
-            .inTable('parents')    
+            .references('id')
+            .inTable('parents') 
+            .notNullable();   
     
         
       });
