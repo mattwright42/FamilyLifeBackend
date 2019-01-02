@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     
         // other fields
         tbl
-            .string('name', 255)
+            .string('first & last name', 255)
             .notNullable();
 
         tbl.string('email', 128);
