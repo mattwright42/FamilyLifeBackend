@@ -14,3 +14,5 @@ server.use(morgan('dev'));
 server.get('/', (req, res) => {
   res.send(`API running on port: ${port}`);
 });
+
+module.exports = server;
