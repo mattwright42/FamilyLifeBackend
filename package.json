@@ -1,0 +1,23 @@
+{
+  "name": "FamilyLifeBackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattwright42/FamilyLifeBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattwright42/FamilyLifeBackend/issues"
+  },
+  "homepage": "https://github.com/mattwright42/FamilyLifeBackend#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
