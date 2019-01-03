@@ -6,13 +6,23 @@ exports.up = function(knex, Promise) {
     
         // other fields
         tbl
-            .string('first & last name', 255)
+            .string('first name', 255)
+            .notNullable();
+        tbl
+            .string('last name', 255)
             .notNullable();
 
-        tbl.string('email', 128);
+        tbl
+            .string('email', 128)
+            .unique();
+
+        tbl 
+            .boolean('are you a parent (true of false)')
+        tbl 
+            .boolean('are you a child (true of false)')
     
         
-      });
+      })
     };
 
 exports.down = function(knex, Promise) {
