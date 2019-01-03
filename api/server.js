@@ -23,7 +23,7 @@ server.get('/api/parents', (req, res) => {
 });
 
 //creates new parent
-server.post('/api/child', (req, res) => {
+server.post('/api/parents', (req, res) => {
   const parent = req.body;
 
   db('parents')
