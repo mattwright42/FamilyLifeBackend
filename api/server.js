@@ -37,6 +37,13 @@ server.post('/api/parents', (req, res) => {
     });
 });
 
+//returns all children
+server.get('/api/child', (req, res) => {
+  db('children')
+    .then(children => res.status(200).json(children))
+    .catch(err => res.status(500).json(err));
+});
+
 //creates new child
 server.post('/api/child', (req, res) => {
   const child = req.body;
