@@ -37,7 +37,7 @@ server.post('/api/parents', (req, res) => {
     });
 });
 
-//cretes new child
+//creates new child
 server.post('/api/child', (req, res) => {
   const child = req.body;
 
@@ -51,4 +51,31 @@ server.post('/api/child', (req, res) => {
       res.status(500).json({ message: 'Error inserting', err });
     });
 });
+
+//get all chores
+server.get('/api/chores', (req, res) => {
+  db('chores')
+    .then(chore => res.status(200).json(chore))
+    .catch(err => res.status(500).json(err));
+});
+
+//creates chore
+server.post('/api/chores', (req, res) => {
+  const chore = req.body;
+
+  db('chores')
+    .insert(chore)
+    .returning('id')
+    .then(ids => {
+      res.status(201).json(ids);
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Error inserting', err });
+    });
+});
+
+//edits chore
+
+//deletes chore
+
 module.exports = server;
