@@ -22,6 +22,21 @@ server.get('/api/parents', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+//creates new parent
+server.post('/api/child', (req, res) => {
+  const parent = req.body;
+
+  db('parents')
+    .insert(parent)
+    .returning('id')
+    .then(ids => {
+      res.status(201).json(ids);
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Error inserting', err });
+    });
+});
+
 //cretes new child
 server.post('/api/child', (req, res) => {
   const child = req.body;
