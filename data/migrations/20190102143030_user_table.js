@@ -15,10 +15,10 @@ exports.up = function(knex, Promise) {
             .notNullable();    
 
         tbl
-            .string('first name', 255)
+            .string('firstName', 255)
             .notNullable();
         tbl
-            .string('last name', 255)
+            .string('lastName', 255)
             .notNullable();
 
         tbl
@@ -36,7 +36,7 @@ exports.up = function(knex, Promise) {
             .notNullable();
 
         tbl 
-            .integer('family id')
+            .integer('familyId')
             .notNullable();
     
         
