@@ -1,12 +1,12 @@
 
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('family1', function(tbl) {
+    return knex.schema.createTable('old family', function(tbl) {
         // primary key
         tbl.increments();
     
         // other fields
         tbl
-            .string('family1 name', 255)
+            .string('old family name', 255)
             .unique()
             .notNullable();
 
@@ -27,5 +27,5 @@ exports.up = function(knex, Promise) {
     };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('family1');
+    return knex.schema.dropTableIfExists('old family');
 };
