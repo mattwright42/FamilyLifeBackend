@@ -46,15 +46,15 @@ function protected(req, res, next) {
   }
 }
 
-function checkRole(role) {
-  return function(req, res, next) {
-    if (req.decodedToken && req.decodedToken.roles.includes(role)) {
-      next();
-    } else {
-      res.status(403).json({ message: 'you have no access to this resource' });
-    }
-  };
-}
+// function checkRole(role) {
+//   return function(req, res, next) {
+//     if (req.decodedToken && req.decodedToken.roles.includes(role)) {
+//       next();
+//     } else {
+//       res.status(403).json({ message: 'you have no access to this resource' });
+//     }
+//   };
+// }
 
 
 server.post('/api/register', (req, res) => {
@@ -71,7 +71,32 @@ server.post('/api/register', (req, res) => {
   .catch(err => console.log(err) && res.status(500).json(err))
 })
 
+// POST /api/login
+server.post('/api/login', (req,res) => {
+  const creds = req.body;
 
+  db('users')
+  .where({ username: creds.username })
+  .first()
+  .then(user => {
+      if (user && bcrypt.compareSync(creds.password,user.password)) {
+          const token = generateToken(user);
+          res.status(200).json({ message: 'welcome user', token})
+      } else {
+          res.status(401).json({ message: 'the password or username was incorrect'})
+      }
+  })
+  .catch(err => res.status(500).json(err))
+})
+
+server.get('/api/user', protected, (req,res) => {
+  db('users')
+  .select('id', 'username', 'password')
+  .then( users => {
+      res.json(users);
+  })
+  .catch(err => res.status(500).json(err))
+})
 
 server.listen(port, () =>
   console.log(`\n** welcome to the server running on ${port} **\n`)
