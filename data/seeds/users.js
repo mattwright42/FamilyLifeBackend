@@ -5,9 +5,12 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        { firstName: 'matt', email: 'fjdksla@gjkld'},
-        { firstName: 'mary', email: 'fjdksla@gjkld'},
-        { firstName: 'josh', email: 'fjdksla@gjkld'}
+        { firstName: 'rowValue1',
+          lastName: 'rowValue1',
+          email: 'jfdksl@gjkdsa.com'
+      }
+          
       ]);
     });
 };
+

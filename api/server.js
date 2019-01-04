@@ -15,12 +15,7 @@ server.get('/', (req, res) => {
   res.send(`API running on port: ${port}`);
 });
 
-//returns all users
-server.get('/api/users', (req, res) => {
-  db('users')
-    .then(family => res.status(200).json(family))
-    .catch(err => res.status(500).json(err));
-});
+
 
 // //creates new user
 // server.post('/api/users', (req, res) => {
